@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./Navbar";
+import Banner from "./assets/banner.jpg";
+import SecondBanner from "./assets/second-banner.jpg";
+import FutureLaunchesData from "./future/FutureLaunchesData";
+import PastLaunchesData from "./past/PastLaunchesData";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useNavigate,
+  Link,
+} from "react-router-dom";
 
 function App() {
+  const styles = {
+    backgroundImage: `url(${SecondBanner})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="min-h-screen h-full min-w-full w-full" style={styles}>
+      <Navbar />
+      <Routes>
+        <Route path="/past" element={<PastLaunchesData />} />
+        <Route path="/future" element={<FutureLaunchesData />} />
+      </Routes>
     </div>
   );
 }
